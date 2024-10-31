@@ -1,0 +1,58 @@
+using System;
+class Program
+{
+    static void Main(string[] args)
+    {
+        int stop = 500;
+        int max = 0;
+        int max_14 = 0;
+        int max_7 = 0;
+        int max_2 = 0;
+
+        Random random = new Random();
+        int[] numbers = new int[stop];
+        for (int i = 0; i < numbers.Length; i++)
+        {
+            numbers[i] = random.Next(0, 500); 
+        }
+
+        for (int i = 1; i < numbers.Length; i++)
+        {
+            if (numbers[i] > max)
+            {
+                max = numbers[i];
+            }
+            if (numbers[i] > max_14 & numbers[i] % 14 == 0)
+            {
+                max_14 = numbers[i];
+            }
+            if (numbers[i] > max_7 & numbers[i] % 7 == 0)
+            {
+                max_7 = numbers[i];
+            }
+            if (numbers[i] > max_2 & numbers[i] % 2 == 0)
+            {
+                max_2 = numbers[i];
+            }
+        }
+        int multi1 = max * max_14;
+        int multi2 = max_2 * max_7;
+
+        if (multi1 > 0 & multi2 > 0)
+        {
+            if (multi1 < multi2)
+            {
+                Console.WriteLine($"Нужное число R: " + multi2);
+
+            }
+            else
+            {
+                Console.WriteLine($"Нужное число R: " + multi1);
+            }
+        }
+        else
+        {
+            Console.WriteLine(-1);
+        }
+    }
+}
